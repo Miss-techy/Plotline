@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import './MovieApp.css';
 import { Link } from 'react-router-dom'
 import MovieDetails  from './MovieDetails'
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 
 
 
