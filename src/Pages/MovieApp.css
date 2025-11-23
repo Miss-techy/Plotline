@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
+
+/* === GENERAL RESET === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: slategrey;
+  padding: 0;
+}
+
+/* === NAVIGATION === */
+
+
+.search-title {
+  font-family: "Metamorphous", serif;
+  font-size: 1.6em;
+  font-weight: lighter;
+  text-align: center;
+  margin: 0;
+  margin-top:4rem;
+  letter-spacing: 2px;
+  color: whitesmoke;
+}
+
+/* === SEARCH BAR === */
+.searchBar {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  margin:auto;
+}
+
+.searchBar input {
+  margin-top:1.5rem;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.searchBar button {
+  padding: 12px 30px;
+  font-size: 1rem;
+  background-color: teal;
+  color: #fafafa;
+  margin-top: 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.searchBar button:hover {
+  border: 1px solid teal;
+  background-color: transparent;
+  color: teal;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 500px) {
+  .searchBar input,
+  .searchBar button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+ 
+}
+
+/* === AUTOCOMPLETE === */
+.autocomplete-list {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  margin-top: 80px;
+  padding: 0;
+  width: 60vw;
+  max-width: 100%;
+  z-index: 10;
+}
+
+.autocomplete-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f0f0f0;
+}
+
+/* === SIDEBAR FILTER === */
+
+/* Floating Button */
+.filterFloatingBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  z-index: 1000;
+}
+
+.filterFloatingBtn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+}
+
+/* Modal Overlay */
+.filterModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Box */
+.filterModal {
+  background: #fff;
+  width: 350px;
+  max-width: 90%;
+  padding: 25px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.filterModal h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #666;
+}
+
+.filterModal label {
+  display: block;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.filterModal select,
+.filterModal input[type="range"] {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.applyBtn {
+  margin-top: 20px;
+  width: 100%;
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.applyBtn:hover {
+  background: #ff6a00;
+}
+
+/* === Filter Sections === */
+.genreFilter,
+.typeFilter,
+.yearFilter,
+.ratingFilter,
+.apply {
+  display: flex;
+  flex-direction: column;
+}
+
+.genreFilter select,
+.typeFilter select {
+  margin-top: 7px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* === Year & Rating Ranges === */
+.yearFilter, .ratingFilter {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
+  font-family: sans-serif;
+}
+
+.yearFilter label, .ratingFilter label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.yearFilter input[type="range"], .ratingFilter input[type="range"] {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: none;
+  margin: 0;
+  top: 24px;
+}
+
+/* Thumb styling */
+.yearFilter input[type="range"]::-webkit-slider-thumb, 
+.ratingFilter input[type="range"]::-webkit-slider-thumb{
+  pointer-events: all;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007BFF;
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  -webkit-appearance: none;
+}
+
+.yearFilter input[type="range"]::-moz-range-thumb,
+.ratingFilter input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #057BFF;
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Track line below the thumbs */
+.yearFilter::before,
+.ratingFilter::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 0;
+  height: 8px;
+  width: 100%;
+  background: #ddd;
+  border-radius: 4px;
+  z-index: 0;
+}
+
+/* Filled range (between min and max thumbs) */
+.yearFilter::after,
+.ratingFilter::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  height: 8px;
+  background: #007BFF;
+  border-radius: 4px;
+  z-index: 1;
+  left: calc(((var(--min) - 1990) / 35) * 100%);
+  right: calc(100% - ((var(--max) - 1990) / 35) * 100%);
+}
+
+/* === APPLY BUTTON === */
+.apply a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.apply a:hover {
+  background-color: #0056b3;
+}
+
+/* === MAIN SECTION (MOVIES) === */
+.main {
+  padding: 20px;
+}
+
+/* Container for all movie cards */
+/*.movieContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}*/
+
+.movieContainer {
+  padding: 20px;
+}
+
+/* Make .movieBox the flex container */
+.movieBox {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Individual movie card */
+.movieCard {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.movieCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Image styling */
+.movieImg img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title and year container */
+.title {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-grow: 1;
+}
+
+/* Movie title */
+.title h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+  color: #ffdd59;
+  text-align: center;
+}
+
+/* Movie year */
+.title p {
+  font-size: 0.9rem;
+  color: #ccc;
+  text-align: center;
+}
+
+/* "See Details" button */
+.title button {
+  background-color: #ffdd59;
+  color: #1e1e1e;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: auto;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for button */
+.title button:hover {
+  background-color: #ffc107;
+}
+
+/* Link inside button */
+.title button a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* === ERROR AND LOADING === */
+.loading,
+.error {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.error {
+  color: darkred;
+}

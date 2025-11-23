@@ -1,0 +1,140 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
+
+
+.nav, .nav * {
+  box-sizing: border-box;
+}
+
+/* NAV CONTAINER */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 2rem;
+  background: teal;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* LOGO */
+.nav-logo { 
+  font-family: "Metamorphous", serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* LINKS (desktop default) */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+
+.nav-links li a, .nav-item {
+  text-decoration: none;
+  color: white;
+  transition: color .3s ease;
+}
+
+.nav-links li a,nav-item:hover {
+  color: teal;
+}
+
+.nav-user{
+  font-size: 14px;
+  color: white;
+}
+
+/* CTA BUTTON */
+.nav-cta {
+  padding: 10px 20px;
+  background: #ffb84d;
+  border: none;
+  border-radius: 6px;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.nav-cta:hover {
+  background: #ffd8a1;
+}
+
+/* ---------------------- */
+/*      HAMBURGER MENU    */
+/* ---------------------- */
+
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: none; /* hidden on desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  color: white;
+}
+
+.hamburger span {
+  height: 4px;
+  background: white;
+  width: 100%;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* Hamburger animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ---------------------- */
+/*      MOBILE MENU       */
+/* ---------------------- */
+
+@media (max-width: 768px) {
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Turn nav-links into mobile panel */
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 70%;
+    height: calc(100vh - 70px);
+    background: teal;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.1);
+    flex-direction: column;
+    padding-top: 2rem;
+    gap: 2rem;
+    color: white;
+    transition: right 0.35s ease-in-out;
+  }
+
+  /* When open */
+  .nav-links.open {
+    right: 0;
+  }
+}
