@@ -436,3 +436,24 @@ body {
 .error {
   color: darkred;
 }
+
+/* Wishlist */
+.wishlist-popup {
+  position: fixed;
+  top: 10%;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 12px 20px;
+  background: #ff3b6f;
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  animation: fadeUp 1.2s ease forwards;
+  z-index: 9999;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translate(-50%, 20px); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}

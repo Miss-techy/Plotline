@@ -1,0 +1,77 @@
+/* Entire page wrapper */
+.wishlist-container {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+/* Title */
+.wishlist-container h2 {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  color: #ffdd59;
+  font-weight: 700;
+}
+
+/* Grid of movies */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* Each movie card */
+.wishlist-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for card */
+.wishlist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Movie poster */
+.wishlist-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Movie title */
+.wishlist-card h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+  height: 40px;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+/* Remove button */
+.wishlist-card button {
+background:#ffdd59;  border: none;
+  color: #141414;font-weight:bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.wishlist-card button:hover {
+  background: #e0305f;color:#ffffff;
+}
+
+/* Message shown when wishlist is empty */
+.wishlist-container p {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: #555;
+}

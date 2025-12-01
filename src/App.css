@@ -34,7 +34,7 @@ body, html, .App {
   opacity: 0;
   font-size:5rem;
   /*color:#ff9900;*/
-  color: teal;
+  color: #ffdd59;
   text-align:center;
 font-family: "Metamorphous", serif;
   animation: logoFade 4.5s ease forwards;
@@ -80,7 +80,7 @@ font-family: "Metamorphous", serif;
   flex: 1;
   transition: transform 2s ease-in-out;
 
-   background: rgba(255, 255, 255, 0.08);
+   background: rgba(255, 255, 255, 0.08); background:#ffdd59;
   backdrop-filter: blur(10px);
 }
 

@@ -3,6 +3,10 @@ import {useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import './MovieDetails.css';
+import Navbar from "../Components/Navbar";
+
+
+
 
 function MovieDetails() {
 
@@ -73,6 +77,7 @@ function handleBack() {
   return (
 
     <>
+    <Navbar /> 
       <div className="details-container">  
     <div className="return-button" onClick={handleBack}>
       <FaArrowAltCircleLeft />

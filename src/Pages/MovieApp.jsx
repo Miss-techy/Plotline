@@ -20,6 +20,12 @@ function MovieApp() {
   const [minRating, setMinRating] = useState(1);
   const [maxRating, setMaxRating] = useState(10);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [wishlist, setWishlist] = useState(
+  JSON.parse(localStorage.getItem("wishlist")) || []
+);
+  const [wishMessage, setWishMessage] = useState("");
+
+
 
   const apiKey = 'ec041243';
   const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${input}`;
@@ -120,6 +126,35 @@ function MovieApp() {
     setMovies(tempArray);
   }
 
+
+  function addToWishlist(movie) {
+  // Prevent duplicates
+  const exists = wishlist.some((item) => item.imdbID === movie.imdbID);
+  if (exists) return showAddedAnimation("Already in Wishlist!");
+
+  const updatedList = [...wishlist, movie];
+
+  setWishlist(updatedList);
+
+  // Save to localStorage
+  localStorage.setItem("wishlist", JSON.stringify(updatedList));
+
+  // Show animation
+  showAddedAnimation("Added to Wishlist ❤️");
+}
+
+
+function showAddedAnimation(message) {
+  setWishMessage(message);
+
+  setTimeout(() => {
+    setWishMessage("");
+  }, 1200); // disappears after 1.2 sec
+}
+
+
+
+
   return (
     <>
      <Navbar /> 
@@ -159,6 +194,12 @@ function MovieApp() {
         {error && <p className="error">{error}</p>}
       </div>
 
+      {wishMessage && (
+  <div className="wishlist-popup">
+    {wishMessage}
+  </div>
+)}
+
       <section className="main">
         <div className="movieContainer">
           <div className="movieBox">
@@ -180,6 +221,9 @@ function MovieApp() {
                   <button>
                     <Link to={`/MovieDetails/${movie.imdbID}`}>See Details</Link>
                   </button>
+                  <button onClick={() => addToWishlist(movie)}>❤️ Add to Wishlist
+                  </button>
+
                 </div>
               </div>
             ))}
